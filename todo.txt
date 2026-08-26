@@ -1,0 +1,57 @@
+1 connect with excel sheet where we're tracking down the parking slots
+    1.1 agent should return the number of days I was in the office by verifying on which dates I've signed up for parking
+    1.2 
+
+2 input data can be also connected with hibob so we take the data (holidays, leave etc) from there 
+    2.1 verify if day_tracker.json has invalid input, duplicates, ...
+    2.2 find best way to provision input data (is it json file, is it slack list)
+
+3 planned office days   
+    3.1 fill in planned office days
+    3.2 suggest which days to take
+
+4 final idea is to have an agent that is spun somewhere and we can use it for immediate testing
+    4.1 cloud run functions
+    4.2 browser enpoint
+    4.3 integration with slack ??
+    4.4 allow me to prompt it  
+        -- how many days I need to be in the office this month
+        -- suggest best options for being in the office
+    4.5 send reminders
+
+5. input validation: day_tracker -- full year, take in number of holidays and carried over vacation days
+    5.1 verify that total number of holidays is within the allowed saldo
+    5.2 organise by years
+    5.3 add validations of the input
+    5.4 json/yaml input data
+
+6. update readme file
+   ✓ 6.1 "yearly_vacation_allowance": 27,
+          "carried_over_vacation_days": 6,
+   6.2. all about year statistics
+   6.3 planned office days
+   6.4. outputs
+
+7. push to personal git
+
+------------------------------------------
+Document the process
+1. I sign up for parking
+2. that day is marked as in-the-office
+    3. if I change my mind, the code should grab it (refresh daily, or after new execution, each time it checks the excel sheet)
+    4. from hi bob get Vacation and out of office days (also refresh daily, or after new execution, each time it checks hibob)
+5. take current month, provision number of working days for me (total - holidays - my out of office days)
+6. return output:
+    Agent Status Check on: 2026-08-01 (ISO Week 31)
+
+    ================== AGENT REPORT (2026-08) ==================
+    Official working days in HR:      20 days
+        Public holidays this month:      2 days
+        Personal working days:          20 days
+        Required office days (target):  10 days
+        Days spent in office so far:     0 days
+        Target fulfillment:               0.0%
+    --------------------------------------------------
+    Remaining office days to owe:     10 days
+        Calendar weeks left in month:    5 weeks
+        Actual remaining workdays:      20 available days
